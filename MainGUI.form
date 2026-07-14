@@ -1,0 +1,81 @@
+package devices;
+
+import behavioral.DeviceSubject;
+import structural.SmartDevice;
+
+/**
+ * OldFanAdapter implements the Adapter design pattern
+ *
+ * <p>Adapts legacy OldFan hardware to work with the modern SmartDevice interface.
+ * This allows old fans to be controlled uniformly with new smart devices.</p>
+ *
+ * <h2>Adapter Pattern Implementation</h2>
+ * <ul>
+ *   <li><strong>Target:</strong> {@link structural.SmartDevice} interface</li>
+ *   <li><strong>Adaptee:</strong> OldFan (legacy hardware)</li>
+ *   <li><strong>Adapter:</strong> OldFanAdapter (this class)</li>
+ * </ul>
+ *
+ * <h2>Key Features</h2>
+ * <ul>
+ *   <li><code>startSpin()</code> → <code>turnOn()</code> : Start fan rotation</li>
+ *   <li><code>stopSpin()</code> → <code>turnOff()</code> : Stop fan rotation</li>
+ * </ul>
+ *
+ * <h2>Benefits</h2>
+ * <ul>
+ *   <li>Legacy Integration: Old fans work with new system</li>
+ *   <li>Uniform Interface: Same control as smart devices</li>
+ *   <li>Observer Support: Real-time notifications</li>
+ *   <li>Easy Extension: Adapt other legacy devices</li>
+ * </ul>
+ *
+ * <h2>Usage Example</h2>
+ * <pre>
+ * // Created via Factory
+ * SmartDevice fan = DeviceFactory.createDevice("fan");
+ *
+ * // Works like any smart device
+ * fan.turnOn();  // Calls legacyFan.startSpin()
+ * fan.turnOff(); // Calls legacyFan.stopSpin()
+ * </pre>
+ *
+ * @author Sathya-om Ramdass
+ * @author Jonathan Walkes
+ * @version 1.0
+ * @since 2025-11-14
+ *
+ * @see creational.DeviceFactory#createDevice(String)
+ * @see behavioral.DeviceSubject
+ * @see structural.SmartDevice
+ */
+public class OldFanAdapter extends DeviceSubject implements SmartDevice {
+
+    private final OldFan legacyFan;
+    private String name = "Fan";
+    private boolean running = false;
+
+    public OldFanAdapter() {
+        this.legacyFan = new OldFan();
+    }
+
+    @Override public void turnOn() {
+        legacyFan.startSpin();
+        running = true;
+        notifyObservers(name + " turned ON via Adapter");
+    }
+
+    @Override public void turnOff() {
+        legacyFan.stopSpin();
+        running = false;
+        notifyObservers(name + " turned OFF via Adapter");
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override public String getName()  { return name; }
+    @Override public boolean isOn()    { return running; }
+}
+
