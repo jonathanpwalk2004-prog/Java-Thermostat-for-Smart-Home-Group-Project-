@@ -111,7 +111,9 @@ Built with JDK 24+. If you get errors on older JDK:
 ===================================================================================
 
 Developed by:
+
 • Sathya-om Ramdass  – Full programming, GUI design, Javadoc, refactoring
+
 • Jonathan Walkes    – Design patterns planning, testing, documentation support
 
 Thank you for reviewing our Smart Home Automation System!
