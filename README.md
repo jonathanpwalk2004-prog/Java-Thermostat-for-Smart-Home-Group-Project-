@@ -22,11 +22,11 @@ If you are using a JDK older than version 24, see the compatibility note at the 
 4. Press F6 or click Run Project.
 5. The Smart Home Automation GUI will appear.
 
-***Running without NetBeans***
-1. Go to the dist folder.
-2. Double-click SmartHomeSystem.jar
-   (Java must be installed — double-clicking works instantly on most computers)
-
+**Running without NetBeans**
+1. Open the project in NetBeans and click "Clean and Build" to generate the executable.
+2. Go to the newly created /dist folder on your machine.
+3. Double-click SmartHomeSystem.jar.
+4. Alternatively, run via terminal: java -jar dist/SmartHomeSystem.jar
 
 3. USING THE APPLICATION
 ===================================================================================
@@ -93,7 +93,9 @@ All actions and real-time notifications appear at the bottom:
 8. JAVADOC API DOCUMENTATION
 ===================================================================================
 
-Open: dist/javadoc/index.html in any browser
+enerate Javadoc locally by right-clicking the project in NetBeans and selecting "Generate Javadoc". 
+It will be created under dist/javadoc/index.html.
+
 Fully documented professional API with pattern explanations.
 
 
